@@ -1,0 +1,86 @@
+﻿<Window x:Class="Стили.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Стили"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="400"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <Style TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Verdana"/>
+                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="btnTemplate">
+            <Border CornerRadius="30" BorderBrush="CadetBlue" BorderThickness="2" Background="LightBlue" Height="40" Width="100" VerticalAlignment="Top" x:Name="btnBorder">
+                <ContentControl Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Hello"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Background" Value="Azure"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Border CornerRadius="230">
+                <Border.Background>
+                    <SolidColorBrush Color="#FFFFFF9A"/>
+                </Border.Background>
+                <Grid>
+                    <Border>
+                        <AdornerDecorator>
+                            <ContentPresenter/>
+                        </AdornerDecorator>
+                    </Border>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </Window.Template>
+    <Grid Margin="50">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnHello1" Template="{StaticResource btnTemplate}" Click="btnHello1_Click"/>
+            <Button x:Name="btnHello2" Template="{StaticResource btnTemplate}" Click="btnHello2_Click"/>
+            <CheckBox  Content="CheckBox1"/>
+            <CheckBox  Content="CheckBox2"/>
+            <CheckBox  Content="CheckBox3"/>
+            <CheckBox  Content="CheckBox4"/>
+            <Button Content="Close" Height="40" Width="100" Background="#FFF1E85F" x:Name="btnClose" Click="btnClose_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="25"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}">
+                            <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Background" Value="Azure"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
